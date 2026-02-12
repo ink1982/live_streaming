@@ -1,0 +1,100 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'placeholders';
+@use 'sass:color';
+
+.header {
+	width: 100%;
+	height: 50px;
+	// background-color: color.adjust($color_white, $alpha: -0.85);
+	background-color: $blue_color;
+	border: {
+		bottom: {
+			width: 1px;
+			style: solid;
+			color: $color_white;
+		}
+	}
+
+	.nav {
+		height: 50px;
+		@include d-flex(start, center);
+
+		&__title {
+			width: 255px;
+			height: 100%;
+			border-right: 1px solid $color_white;
+			@include d-flex(center, center);
+
+			&-link {
+				font-size: 25px;
+				font-weight: 500;
+				color: $color_white;
+
+				span {
+					font-weight: 700;
+				}
+
+				@extend %hover-black;
+			}
+		}
+
+		&__links {
+			flex-grow: 1;
+
+			.list {
+				@include d-flex(start, center, nowrap, row, min(100px, 5vw), 0);
+				padding: 0 0 0 min(100px, 5vw);
+
+				&__item {
+					&-link {
+						font-size: 22px;
+						font-weight: 400;
+						color: $color_white;
+
+						@extend %hover-black;
+					}
+				}
+			}
+
+			@media (max-width: $media_lg) {
+				.list {
+					@include d-flex(center, center, nowrap, row, min(100px, 5vw), 0);
+					padding: 0;
+				}
+			}
+		}
+
+		.covid {
+			height: 100%;
+			@include d-flex(center, center);
+			padding: 0 30px;
+			border: {
+				left: 1px solid $color_white;
+				right: 1px solid $color_white;
+			}
+
+			&__link {
+				font-size: 16px;
+				font-weight: 700;
+				color: $color_white;
+
+				@extend %hover-black;
+			}
+		}
+
+		.globe {
+			@include d-flex(center, center);
+			width: 90px;
+
+			&__link {
+				&-icon {
+					width: 27px;
+					height: 28px;
+
+					@extend %hover-black-icon;
+				}
+			}
+		}
+	}
+}
