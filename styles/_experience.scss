@@ -1,0 +1,23 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.experience {
+	padding: 180px 0 0 0;
+	margin: 0 auto;
+	text-align: center;
+	@include d-flex(start, center, nowrap, column, 0, 90px);
+
+	&__title {
+		@include font(60px, 400, $color_white);
+
+		@media (max-width: $media_sm) {
+			@include font(35px, 400, $color_white);
+		}
+	}
+
+	&__cards-wrapper {
+		@include d-flex(space-around, center, wrap, row, 20px, 55px);
+		width: 100%;
+		padding: 0 15px;
+	}
+}
